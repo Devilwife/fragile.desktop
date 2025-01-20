@@ -62,13 +62,13 @@ function generateReadme(answers) {
     return `
 # ${answers.title}
     
-##Description
+## Description
 ${answers.description}
 
-##Badge
+## Badge
 ${renderLicenseBadge(answers.license)} 
     
-##Table of Contents
+## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contribution](#contribution)
@@ -76,23 +76,23 @@ ${renderLicenseBadge(answers.license)}
 - [License](#license)
 - [Questions](#questions)
     
-##Installation <a name="installation"></a>
+## Installation
 ${answers.installation}
     
-##Usage <a name="usage"></a>
+## Usage
 ${answers.usage}
     
-##Contribution <a name="contribution"></a>
+## Contribution
 ${answers.contribution}
     
-##Test <a name="test"></a>
+## Test
 ${answers.test}
     
-##License <a name="license"></a>
-This project is licensed under ${answers.license}
+## License
+This project is licensed under ${renderLicenseLink(answers.license)}
     
-##Questions <a name="questions"></a>
-If there's any additional questions i can answer for you, you can reach me at [${answers.email}](mailto:${answers.email}) or visit my GitHub profile at https://github.com(${answers.github})
+## Questions
+If there's any additional questions i can answer for you, you can reach me at [${answers.email}](mailto:${answers.email}) or visit my GitHub profile at https://github.com/${answers.github}
 
     `;
 }
@@ -141,7 +141,15 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-    if (license === 'None') {
+    if (license === 'MIT') {
+        return '![license: MIT](https://opensource.org/licenses/MIT)';
+    } else if (license === 'Apache-2.0') {
+        return '![license](https://opensource.org/licenses/Apache-2.0)';
+    } else if (license === 'BSL-1.0') {
+        return '![license](https://opensource.org/licenses/BSL-1.0)';
+    } else if (license === '0BSD') {
+        return '![license](https://opensource.org/licenses/0BSD)';
+    } else{
         return '';
     }
 }
